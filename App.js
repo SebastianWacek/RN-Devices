@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import 'react-native-gesture-handler';
+
+import React, {useState} from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import {createDrawerNavigator} from "@react-navigation/drawer";
+import CameraScreen from "./CameraScreen";
+import Bateria from "./Bateria";
+import AccelerometerScreen from "./AccelerometerScreen";
+
+const Drawer = createDrawerNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    return (
+        <NavigationContainer>
+            <Drawer.Navigator
+                screenOptions={{
+                    headerTitle: "Lab5",
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+                }}>
+                <Drawer.Screen name="Kamera" component={CameraScreen} />
+                <Drawer.Screen name="Bateria" component={Bateria}/>
+                <Drawer.Screen name="Akcelerometr" component={AccelerometerScreen}/>
+            </Drawer.Navigator>
+        </NavigationContainer>
+    );
+}
